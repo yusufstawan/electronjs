@@ -14,17 +14,18 @@ const menuItem = [
     label: 'File',
     submenu: [
       {
-        label: 'New Window html',
+        label: 'Open Camera',
         click: async () => {
-          // await shell.openExternal('https://electronjs.org')
           const win2 = new BrowserWindow({
-            height: 300,
-            width: 400,
+            height: 500,
+            width: 800,
             show: false,
             backgroundColor: '#f0f0f0'
           })
 
-          win2.loadFile('index2.html')
+          // win2.webContents.openDevTools()
+          win2.loadFile('camera.html')
+          win2.once('ready-to-show', () => win2.show())
         }
       },
       {
