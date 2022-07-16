@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu, shell } = require('electron')
 const path = require('path')
 
 const menuItem = [
@@ -15,12 +15,27 @@ const menuItem = [
     submenu: [
       {
         label: 'Learn More',
+        click: async () => {
+          await shell.openExternal('https://electronjs.org')
+        }
       },
       {
         type: 'separator'
       },
       {
         label: 'Exit',
+        click: () => app.quit()
+      },
+    ]
+  },
+  {
+    label: 'Window',
+    submenu: [
+      {
+        role: 'minimize'
+      },
+      {
+        role: 'close'
       }
     ]
   }
